@@ -23,6 +23,8 @@ WHERE id = 1
 
 It will be removed in a later checkpoint.
 
+There needs to be some methods that gets the entries from a file, as well as the possibility to add more entries.
+
 8)
 ```
 def snake_to_camel snake_case
