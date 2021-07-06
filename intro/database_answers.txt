@@ -1,0 +1,48 @@
+1) remove duplicates in a query response
+
+the below would give me all the unique genres in a query.
+
+sql.openConnection()
+genres = sql.performQuery("SELECT DISTINCT genre FROM table")
+sql.closeConnection()
+
+2) filter records using inequalities, pattern matching, ranges, and boolean logic
+
+sql.openConnection()
+modern_presidents = sql.performQuery("SELECT year, president FROM table WHERE year > 1900")
+president_lincoln = sql.performQuery("SELECT year, president FROM table WHERE president LIKE '_inc%')
+presidents_in_the_twenties = sql.performQuery("SELECT year, president FROM table WHERE year BETWEEN '1920' AND '1930'")
+president_lincoln = sql.performQuery("SELECT year, president FROM table WHERE year > 1900 AND terms > 1)
+sql.closeConnection()
+
+3) sort records in a particular order
+
+sql.openConnection()
+presidents = sql.performQuery("SELECT year, president, rating FROM table WHERE year > 1900 ORDER BY rating DESC")
+sql.closeConnection()
+
+4) limit the number of records returned
+
+sql.openConnection()
+presidents = sql.performQuery("SELECT year, president, rating FROM table WHERE year > 1900 ORDER BY rating DESC LIMIT 10")
+sql.closeConnection()
+
+5) group records into sections 
+
+sql.openConnection()
+presidents_per_party = sql.performQuery("SELECT party, COUNT(president) FROM table GROUP BY party")
+sql.closeConnection()
+
+6) perform calculations using aggregate functions 
+
+sql.openConnection()
+average_rating_of_partys_presidents = sql.performQuery("SELECT party, ROUND(AVG(rating), 2) FROM table GROUP BY party")
+sql.closeConnection()
+
+7) join tables using cross join, inner join, and outer join
+
+sql.openConnection()
+cross_join = sql.performQuery("SELECT * FROM table_a, table_b")
+inner_join = sql.performQuery("SELECT * FROM table_a JOIN table_b ON table_a.id = table_b.id")
+outer_join = sql.performQuery("SELECT parties.name, presidents.name FROM parties LEFT JOIN presidents ON presidents.party_id = parties.id")
+sql.closeConnection()
